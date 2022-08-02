@@ -29,8 +29,6 @@ public class Demo01 {
 
         //Click item 5th
         records.get(4).click();
-
-
         WebElement ProductTitle = driver.findElement(By.xpath("//span[@id='productTitle']"));
 //        Assert.assertTrue(ProductTitle.getText().toLowerCase().contains(keyword.toLowerCase()));
         validation.Validate(ProductTitle.getText(),keyword, result);
