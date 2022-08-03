@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Demo01 {
     public static void main(String[] args) {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\quynhtn\\Documents\\Web_Driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         int result = 1;
         WebDriver driver = new ChromeDriver();
 
@@ -21,15 +21,15 @@ public class Demo01 {
         List<WebElement> records = driver.findElements(By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']"));
         //validation
         Validation validation= new Validation();
-        for(int i=0; i<records.size(); i++){
-            validation.isContain(records.get(i).getText(),keyword,result);
+        for(WebElement record : records){
+            validation.isContain(record.getText(),keyword,result);
 //            Assert.assertTrue(records.get(i).getText().toLowerCase().contains(keyword.toLowerCase()));
         }
 //
         //Click item 5th
-        int selected = 4;
-        String SelectItemName = records.get(selected).getText();
-        records.get(selected).click();
+        int selectedItem = 4;
+        String SelectItemName = records.get(selectedItem).getText();
+        records.get(selectedItem).click();
         WebElement ProductTitle = driver.findElement(By.xpath("//span[@id='productTitle']"));
 //        Assert.assertTrue(ProductTitle.getText().toLowerCase().contains(keyword.toLowerCase()));
         validation.isMatch(ProductTitle.getText(),SelectItemName,result);
